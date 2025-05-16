@@ -1,0 +1,6 @@
+                    <div>&#x25BC</div>
+                    <div>&#x25BE</div>
+                    <div>&#x2304</div>
+
+                    in python
+                    print('\u25BC')  # Output: ▼

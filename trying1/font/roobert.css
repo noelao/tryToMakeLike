@@ -33,3 +33,9 @@
     font-style:normal;
     font-display:swap
 }
+
+
+@font-face {
+    font-family: maze-m-icons;
+    src: url("./maze-m-icons-0f78edcd088eff7ad25f31cf5cce9c33.woff2") format("woff2"), url("./maze-m-icons-c05731c8d4ee9f424bd2da65f01f8a28.woff") format("woff")
+}
