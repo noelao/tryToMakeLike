@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ui Ux</title>
     <link rel="stylesheet" href="font/roobert.css">
-
     <style>
+        @keyframes muncul {
+            0% {
+                top: -1000px;
+                opacity: 0;
+            }
+            50% {
+                top: 0;
+                opacity: 0;
+            }
+            100% {
+                top: calc(70px / 2);
+                opacity: 1;
+            }
+            
+        }
         :root {
             --terang : #fff;
             --terang2 : #F9FAFC;
@@ -29,10 +43,33 @@
             margin: 0;
             box-sizing: border-box;
         }
+        p a, a p {
+            color: var(--hijau);
+            border-bottom: 1px solid;
+            text-decoration: none;
+        }
+        small {
+            line-height: 1.6;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
         h0 {
             font-size: 3rem;
             font-weight: bold;
         }
+        ul {
+            padding-left: 0;
+            margin-left: 0;
+            list-style-type: none;
+        }
+
         garis {
             width: 100%;
             height: 1px;
@@ -40,7 +77,47 @@
             background-color: var(--garis);
         }
 
+
+        /* class penggunaan double */
+        .share {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 32px;
+            small {
+                font-size: 16px;
+                color: var(--grey);
+            }
+            .kotak {
+                border: solid 1px var(--garis);
+                border-radius: 8px;
+                height: 32px;
+                aspect-ratio: 1;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 6.2px;
+                img {
+                    --currentColor:rgb(83, 90, 116);
+                    height: 100%;
+                }
+                i {
+                    font-family: maze-m-icons !important;
+                    font-style: normal;
+                    font-variant: normal;
+                    color: rgb(83, 90, 116);
+                }
+                i.copy::before {
+                    content: "\f142";
+                }
+            }
+        }
+
         .container {
+            position: relative;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -65,19 +142,45 @@
 
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 24px;
             
             color: black;
             .kiri {
                 display: flex;
+
+                .logoan {
+                    display: flex;
+                    width: max-content;
+
+                    z-index: 2;
+
+                    garis {
+                        height: 100%;
+                        width: 1px;
+                        margin: 0 10px;
+                    }
+                    h2:nth-child(3) {
+                        margin-right: 21px;
+                    }
+                }
                 .ini {
+                    position: relative;
                     padding: 0 16px;
                     display: flex;
                     
-                    cursor: pointer;
                     .hoverin {
+                        cursor: pointer;
                         display: flex;
+                        align-items: center;
                         gap: 5px;
+
+                        p {
+                            font-size: 16px;
+                        }
+
+                        z-index: 2;
+
                         i {
                             font-family: maze-m-icons !important;
                         }
@@ -91,10 +194,72 @@
                             -webkit-font-smoothing: antialiased;
                             content: "\f115";
                         }
+
+                    }
+                    .sesuatu {
+                        background-color: #fff;
+                        box-shadow: rgba(0, 0, 0, 0.06) 0px 16px 24px;
+                        height: 300px;
+                        width: 100%;
+                        
+                        position: fixed;
+
+                        left: 0;
+                        display: flex;
+                        
+                        top: -1000px;
+                        opacity: 0;
+                    }
+                }
+                .ini:hover {
+                    .hoverin {
+                        p {
+                            opacity: .5;
+                        }
+                    }
+                    .sesuatu {
+                        animation-name: muncul;
+                        animation-duration: .3s;
+                        animation-iteration-count: 1;
+                        animation-fill-mode: forwards;
+                        animation-timing-function: linear;
                     }
                 }
             }
             .kanan {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+
+                z-index: 2;
+                
+                p {
+                    font-weight: 500;
+                    border: none;
+                    font-size: 14px;
+                    color: black;
+                }
+                .tomb {
+                    padding:10px 16px;
+                    height: 36px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 8px;
+                    h6 {
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+                }
+                .freeLogin {
+                    background-color: var(--biru1);
+                    color:var(--biru2);
+                }
+                .tryDemo {
+                    background-color: var(--biru2);
+                    color:var(--terang);
+                }
 
             }
         }
@@ -140,15 +305,100 @@
 
                     display: flex;
 
+                    position: relative;
+
                     .tulisan {
                         flex: 1;
+
+                        padding-right: 20px;
+
+                        display: flex;
+                        flex-direction: column;
+
+                        gap: 20px;
+
+                        h0 {
+                            line-height: 1.15em;
+                            padding-right: 40px;
+                        }
+                        h5 {
+                            font-size: 12px;
+                        }
+
+                        .tombol {
+                            color: white;
+                            background-color: var(--hijau);
+                            padding: 8px 12px;
+                            border-radius: 100px;
+
+                        }
+                        p {
+                            line-height: 1.33;
+                            padding-right: 40px;
+                        }
+                        small {
+                            color: var(--grey);
+                        }
+
+                        .author {
+                            padding-top: 12px;
+                            padding-right: 40px;
+
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+
+
+                            .siapa {
+                                display: flex;
+                                width: 100%;
+                                height: 65px;
+                                align-items: end;
+
+                                justify-content: space-between;
+                                h5 {
+                                    font-size: 15px;
+                                }
+                                
+                                .apa {
+                                    display: flex;
+                                    flex-direction: row;
+
+                                    .pp {
+                                        height: 42px;
+                                        aspect-ratio: 1;
+                                        background-color: var(--grey);
+                                        border-radius: 100%;
+                                    }
+                                    .ppKanan {
+                                        padding-right: 12px;
+                                        padding-left: 10px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        h4 {
+                                            line-height: 1.5;
+                                        }
+                                        small {
+                                            line-height: 1.5;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                     .gambaran {
                         flex: 1;
+                        img {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            height: 100%;
+                        }
                     }
                 }
                 .bawah {
-                    height: 150vh;
+                    min-height: 150vh;
+                    height: max-content;
                     width: 100%;
 
                     display: flex;
@@ -157,14 +407,37 @@
                     .navKiri {
                         width: 330px;
                         padding: 0 20px;
-                        
-                        top: 180px;
-                        .asli {
-                            padding-top: 30px;
 
+                        position: relative;
+                        
+                        .asli {
                             width: 100%;
                             position: sticky;
-                            top: calc(100px - 60px + 30px);
+                            top: calc(100px);
+
+                            height: max-content;
+
+                            display: flex;
+                            flex-direction: column;
+                            gap: 16px;
+                            h5 {
+                                font-size: 13px;
+                            }
+                        }
+                        p a {
+                            border: none;
+                            color: var(--grey);
+                            transition: colo .5s ease;
+                        }
+                        p {
+                            font-size: 16px;
+                            line-height: 1.52 !important;
+                        }
+                        p a:hover {
+                            color: var(--hijau);
+                        }
+                        garis {
+                            margin: 10px 0;
                         }
                     }
                     .isi {
@@ -175,12 +448,103 @@
                         flex-direction: column;
                         gap: 34px;
 
-                        p {
-                            font-size: 18px;
-                            line-height: 1.6;
-                        }
                         br {
                             height: 30px;
+                        }
+                        .satuJudul {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 34px;
+                            .kotakanQuote {
+                                min-height: 320px;
+                                height: max-content;
+
+                                width: 100%;
+                                border-radius: 15px;
+                                border: solid 1px var(--garis);
+                                padding: 60px;
+                                margin: 40px 0;
+
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+
+                                position: relative;
+                                small {
+                                    font-size: 15px;
+                                    line-height: 1.5;
+                                }
+                                .creator {
+                                    display: flex;
+                                    width: max-content;
+                                    align-items: center;
+                                    flex-direction: column;
+                                    line-height: 1.5;
+                                    small {
+    
+                                        letter-spacing: 1px;
+                                    }
+                                    h5 {
+                                        font-size: 15px;
+                                        color: var(--hijau);
+                                        border-bottom: solid 1px var(--hijau);
+                                    }
+                                }
+                                .tulisan {
+                                    margin-bottom: 32px;
+                                    p {
+                                        text-align: center;
+                                        line-height: 1.4;
+                                        font-size: 24px !important;
+                                    }
+                                }
+                                .share {
+                                    display: flex;
+                                    gap: 12px;
+                                    align-items: center;
+                                    margin-top: 32px;
+                                    small {
+                                        font-size: 16px;
+                                        color: var(--grey);
+                                    }
+                                    .kotak {
+                                        border: solid 1px var(--garis);
+                                        border-radius: 8px;
+                                        height: 32px;
+                                        aspect-ratio: 1;
+                                    }
+                                }
+
+                                .quote {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    transform: translateY(-36%);
+                                }
+                                .quote2 {
+                                    position: absolute;
+                                    rotate: 180deg;
+                                    bottom: 0;
+                                    right: 0;
+                                    transform: translateY(-36%);
+                                }
+                            }
+                            .gebrakan {
+                                background-color: rgb(45 144 151 / 10%);
+                                padding: 24px 32px;
+                                border-left: solid 2px var(--hijau);
+                                display: flex;
+                                flex-direction: column;
+                                p {
+                                    font-weight: 700;
+                                    line-height: 1.5;
+                                    margin-top: 12px;
+                                }
+                                small {
+                                    margin: 12px 0;
+                                    font-size: 16px;
+                                }
+                            }
                         }
                     }
                 }
@@ -191,35 +555,85 @@
 <body>
     <div class="container">
         <div class="header">
+            
             <div class="kiri">
+                <div class="logoan">
+                    <a href="/">
+                        <h2 title="coba tiru">In the lovp</h2>
+                    </a>
+                    <garis></garis>
+                    <a href="/">
+                        <h2 title="mazze">➰</h2>
+                    </a>
+                </div>
                 <div class="ini">
                     <div class="hoverin">
                         <p>Platform </p>
                         <i name="chevron-down"></i>
                     </div>
+                    <div class="sesuatu"></div>
                 </div>
                 <div class="ini">
                     <div class="hoverin">
                         <p>Solutions </p>
                         <i name="chevron-down"></i>
                     </div>
+                    <div class="sesuatu"></div>
                 </div>
                 <div class="ini">
                     <div class="hoverin">
                         <p>Resources </p>
                         <i name="chevron-down"></i>
                     </div>
+                    <div class="sesuatu"></div>
                 </div>
             </div>
-            <div class="kanan"></div>
+            <div class="kanan">
+                <a href="/">
+                    <p>Log in</p>
+                </a>
+
+                <a href="/" class="tomb freeLogin">
+                    <h6>Get started for free</h6>
+                </a>
+                <a href="/" class="tomb tryDemo">
+                    <h6>Request a demo</h6>
+                </a>
+            </div>
         </div>
         <div class="content">
             <div class="wrapper">
                 <div class="atas">
                     <div class="tulisan">
+                        <a href="/" class="tombol">
+                            <h5>USER RESEARCH</h5>
+                        </a>
                         <h0>How to build a UX research repository (that people actually use)</h0>
+                        <p>Extend the shelf life of your research and set your team up for long-term success with a robust research repository. Here’s how to build yours from scratch.</p>
+                        <small>Mei 16, 2025</small>
+                        <div class="author">
+                            <h5>AUTHORS</h5>
+                            <div class="siapa">
+                                <a href="/" class="apa">
+                                    <div class="pp"></div>
+                                    <div class="ppKanan">
+                                        <h4>Ella Webber</h4>
+                                        <small>Writter</small>
+                                    </div>
+                                </a>
+                                <a href="/" class="apa">
+                                    <div class="pp"></div>
+                                    <div class="ppKanan">
+                                        <h4>Lorelei Whitman</h4>
+                                        <small>Content Marketing Manager at...</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="gambaran"></div>
+                    <div class="gambaran">
+                        <img src="piece/1706003191-user-research-repository-blog-cover.avif" alt="">
+                    </div>
                 </div>
                 <div class="bawah">
                     <div class="navKiri">
@@ -229,7 +643,7 @@
                                     height: var(--tinggian);
                                     aspect-ratio: 1;
 
-                                    --tinggian: 1.8rem;
+                                    --tinggian: 1.52rem;
 
                                     display: flex;
                                     justify-content: space-evenly;
@@ -298,18 +712,143 @@
                                 </div>
                                 <h5>IN THIS ARTICLE</h5>
                             </div>
+                            <p><a href="/">01. What is a research repository in UX research?</a></p>
+                            <p><a href="/">02. What’s included in a research repository?</a></p>
+                            <p><a href="/">03. What are the benefits of a research repository?</a></p>
+                            <p><a href="/">04. 4 Best research repository tools and templates</a></p>
+                            <p><a href="/">05. Creating a UX research repository: 5 Best practices</a></p>
+                            <garis></garis>
+                            <div class="share" style="margin-top: 0;">
+                                <small>Share</small>
+                                <a href="/" class="kotak">
+                                    <i class="copy"></i>
+                                </a>
+                                <a href="/" class="kotak">
+                                    <img src="svg/facebook.svg" alt="">
+                                </a>
+                                <a href="/" class="kotak">
+                                    <img src="svg/twitter.svg" alt="">
+                                </a>
+                                <a href="/" class="kotak">
+                                    <img src="svg/linkelid.svg" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="isi">
-                        <p>
-                            Every UX research report was once a mountain of raw, unstructured data. User research repositories help collate that data, disseminate insights, democratize research, and spread the value of user research throughout your organization.
-                        </p>
-                        <p>
-                            However, building (and maintaining) an accessible user research repository is no simple task. Getting people to use it is a whole other ball game.
-                        </p>
-                        <p>
-                            In this guide, we’ll break down the specifics of user research repositories, some best practices and the benefits of building your own research library, plus how to get started, and our favorite examples of robust research repositories.
-                        </p>
+<div class="satuJudul">
+    <p>
+        Every UX research report was once a mountain of raw, unstructured data. User research repositories help collate that data, disseminate insights, democratize research, and spread the value of user research throughout your organization.
+    </p>
+    <p>
+        However, building (and maintaining) an accessible user research repository is no simple task. Getting people to use it is a whole other ball game.
+    </p>
+    <p>
+        In this guide, we’ll break down the specifics of user research repositories, some best practices and the benefits of building your own research library, plus how to get started, and our favorite examples of robust research repositories.
+    </p>
+</div>
+<div class="satuJudul">
+    <h1>What is a research repository in UX research?</h1>
+    <p>
+A user research repository is a centralized database which includes all your user research data, <a href="/">UX research reports</a>, and artifacts. Different teams—like design, product, sales, and marketing—can find insights from past projects to contextualize present scenarios and make informed decisions.
+    </p>
+    <p>
+Storing all your research data in a single place ensures every team has access to user insights and can use them to make research-driven decisions. Typically maintained by a research operations team, a well-structured research repository is an important step toward breaking down silos and democratizing user research for the entire organization.
+    </p>
+    <p>
+If you’re looking to improve research maturity across your organization and start scaling UX research, building a watertight user research repository is your first step.
+    </p>
+</div>
+<div class="satuJudul">
+
+    <h1>What’s included in a research repository?</h1>
+    <p>
+        Building a UX research repository can be challenging. Between compiling all the data, creating a collaborative space, and making it easily accessible to the teams who need it, you might be struggling to identify a start point.
+    </p>
+    <p>
+        Here’s a checklist of all the essentials to streamline the setup:
+    </p>
+    <ul>
+        <li><p>✅ Mission and vision</p></li>
+        <li><p>✅ Research roadmap</p></li>
+        <li><p>✅ Key methodologies</p></li>
+        <li><p>✅ Tools and templates</p></li>
+        <li><p>✅ Research findings</p></li>
+        <li><p>✅ Raw data and artifacts</p></li>
+    </ul>
+</div>
+
+<div class="satuJudul">
+    
+                    <h1>Mission and vision</h1>
+                    <p>Whether you have a dedicated user research team or involve multiple departments in the UX research process, you need a clear mission and vision statement to create a shared purpose and foster collaboration. Not only should you include your wider UX research strategy and vision, but a ‘North Star’ for your repository, too.</p>
+                    
+                    <p>For example, the mission statement for your repository could be, “Streamline our UX design process and promote informed decision-making with a centralized hub of user feedback and insights.”</p>              
+</div>
+<div class="satuJudul">
+                    <h1>Inspire ideas and prioritize future research</h1>
+                    <p>A research repository can also help in identifying knowledge gaps in your existing research and highlight topics worth further exploration. Analyzing your past data can spark ideas for innovative features and guide your research efforts.</p>
+                    
+<div class="kotakanQuote">
+
+    <div class="tulisan">
+        <p>
+            Different teams can utilize a research repository to help guide the product roadmap on areas that still need to be explored in the app, or areas that need to be revisited.
+        </p>
+    </div>
+    
+<div class="creator">
+    <h5>
+        <a href="/">
+        Kata Dia
+        </a>
+    </h5>
+    <small>Jabatan dia Ketika berkata seperti itu</small>
+</div>
+<div class="share">
+    <small>Share</small>
+    <a href="/" class="kotak">
+        <img src="svg/twitter.svg" alt="">
+    </a>
+    <a href="/" class="kotak">
+        <img src="svg/linkelid.svg" alt="">
+    </a>
+</div>
+<div class="quote">
+    <svg width="65" height="44" viewBox="0 0 65 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M31.1877 16.947V0H25.0119C9.10927 0 0 9.32862 0 24.7208V44H21.4608V27.053C21.4608 20.8339 23.7767 16.947 28.563 16.947H31.1877ZM65 16.947V0H58.8242C42.9216 0 33.8124 9.32862 33.8124 24.7208V44H55.2732V27.053C55.2732 20.8339 57.5891 16.947 62.3753 16.947H65Z" fill="#2d9097"></path>
+    </svg>
+</div>
+<div class="quote2">
+    <svg width="65" height="44" viewBox="0 0 65 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M31.1877 16.947V0H25.0119C9.10927 0 0 9.32862 0 24.7208V44H21.4608V27.053C21.4608 20.8339 23.7767 16.947 28.563 16.947H31.1877ZM65 16.947V0H58.8242C42.9216 0 33.8124 9.32862 33.8124 24.7208V44H55.2732V27.053C55.2732 20.8339 57.5891 16.947 62.3753 16.947H65Z" fill="#2d9097"></path>
+    </svg>
+</div>
+</div>
+</div>
+
+<div class="satuJudul">
+    <h2>1. Define clear objectives for your repository</h2>
+<p>Start by outlining what you want to achieve with a shared research library. You might want to standardize research methodologies across the board or build alignment between multiple teams to create more consistent outputs.</p>
+
+<p>This goal-setting exercise gives all team members a purpose to pursue in upcoming projects. When they know what success looks like, they can strategically plan research questions and choose analysis methods.</p>
+
+<p>Knowing your objectives will also help shortlist the best research and usability testing tools. You can invest in a good platform by evaluating a few core capabilities needed to achieve your goals (more on that shortly).</p>
+
+<div class="gebrakan">
+    <p>💡 Less jargon, more alignment</p>
+    <small>Involve multiple stakeholders when defining the terminology for your library, and check it aligns with any internal Style Guides or glossaries. This ensures alignment from the outset, and makes it easy for everyone to filter results and find what they need.</small>
+</div>
+</div>
+<ul style="list-style: disc inside; padding-left: 0; margin-left: 0;">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+</div>
+                        </div>
+
                     </div>
                 </div>
             </div>
